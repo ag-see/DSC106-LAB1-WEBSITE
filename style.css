@@ -1,5 +1,13 @@
 html{
     --color-accent: oklch(0.5676 0.1 243);
+    color-scheme: dark
+}
+.color-scheme{
+    position: absolute;
+    top: 1rem;
+    right: 3rem;
+    font-size: 80%;
+    font-family: inherit;
 }
 
 body {
@@ -15,11 +23,12 @@ body {
 }
 
 nav{
+    --border-color: oklch(50% 10% 200 / 40%);
     display: flex;
     margin-bottom: 4px;
     border-bottom-width: 1px;
     border-bottom-style: solid;
-    border-bottom-color: oklch(80%, 3%, 200);
+    border-bottom-color: var(--border-color);
 }
 
 a {
@@ -33,12 +42,13 @@ a {
 a.current{
     border-bottom: 0.4em;
     border-bottom-style: solid;
-    border-bottom-color: oklch(80%, 3%, 200);
+    border-bottom-color: var(--border-color);
     padding-bottom: 0.2em;
     border-width: 0.4em
 }
 
 a:hover{
+    background-color: color-mix(in oklch, var(--color-accent), canvas 85%);
     border-bottom: 0.4em;
     border-bottom-style: solid;
     border-bottom-color: var(--color-accent);
