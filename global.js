@@ -54,7 +54,7 @@ export async function fetchGitHubData(username) {
 // Check current host name, adjust urls according to hosting rules
 const BASE_PATH = (location.hostname === "localhost" || location.hostname === "127.0.0.1")
   ? "/"                  // Local server
-  : "/website/";         // GitHub Pages repo name
+  : "/DSC106-LAB1-WEBSITE/";         // GitHub Pages repo name
 
 
 // Define and store urls and their respective titles for the navigation bar
