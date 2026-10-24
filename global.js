@@ -14,6 +14,10 @@ document.body.insertAdjacentHTML(
 	</label>`,
 );
 
+export async function fetchGitHubData(username) {
+    return fetchJSON(`https://api.github.com/users/${username}`);
+}
+
 export async function fetchJSON(url) {
     try {
     // Fetch the JSON file from the given URL
@@ -45,10 +49,6 @@ export function renderProjects(projects, containerElement, headingLevel = 'h2') 
 
         containerElement.appendChild(article);
     }
-}
-
-export async function fetchGitHubData(username) {
-    return fetchJSON(`https://api.github.com/users/${username}`);
 }
 
 // Check current host name, adjust urls according to hosting rules
