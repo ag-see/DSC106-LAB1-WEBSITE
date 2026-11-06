@@ -64,6 +64,7 @@ let pages = [
   { url: 'contact/', title: 'Contact'},
   { url: 'https://github.com/ag-see', title: 'GitHub'},
   { url: 'cv/', title: 'Resume'},
+  { url: 'meta/', title: 'Meta'}
 ];
 
 // Create nav element in body 
