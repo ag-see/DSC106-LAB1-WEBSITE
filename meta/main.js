@@ -67,9 +67,11 @@ function renderCommitInfo(data, commits) {
     d3.select('#stats').selectAll('*').remove();
     const dl = d3.select('#stats').append('dl').attr('class', 'info');
 
-    // Total LOC
+    // Total LOC based on commits reached through scrolling
+    const totalLOC = d3.sum(commits, d => d.totalLines);
+
     dl.append('dt').html('Total <abbr title="Lines of code">LOC</abbr>');
-    dl.append('dd').text(data.length);
+    dl.append('dd').text(totalLOC);
 
     // Total commits
     dl.append('dt').text('Total commits');
