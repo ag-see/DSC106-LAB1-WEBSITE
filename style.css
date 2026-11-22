@@ -361,15 +361,15 @@ circle {
 
 #scatter-plot {
     position: sticky;
-    top: 0;
+    top: 140px;
     left: 0;
     bottom: auto;
     height: 50vh;
 }
-
 #scrolly-2 {
     position: relative;
     display: flex;
+    flex-direction: row-reverse;
     gap: 1rem;
 
     > * {
@@ -383,7 +383,7 @@ circle {
 
 #file-visualization {
     position: sticky;
-    top: 0;
+    top: 52vh;
     left: 0;
     bottom: auto;
     height: 50vh;
