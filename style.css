@@ -362,10 +362,10 @@ circle {
 #scatter-plot {
     position: sticky;
     top: 140px;
-    left: 0;
-    bottom: auto;
     height: 50vh;
+    align-self: flex-start;
 }
+
 #scrolly-2 {
     position: relative;
     display: flex;
@@ -375,18 +375,20 @@ circle {
     > * {
         flex: 1;
     }
+    margin-top: 250px;
 }
 
 #file-story {
     position: relative;
+
+    padding-bottom: 50vh;
 }
 
 #file-visualization {
     position: sticky;
-    top: 52vh;
-    left: 0;
-    bottom: auto;
+    top: 140px;
     height: 50vh;
+    align-self: flex-start;
 }
 
 #stats {

@@ -459,10 +459,8 @@ function onStepEnter(response) {
     updateScatterPlot(data, filteredCommits);
     updateFileDisplay(filteredCommits);
 
-    renderCommitInfo(
-        filteredCommits.flatMap(d => d.lines),
-        filteredCommits
-    );
+    // Keep total LOC and file count based on the complete dataset
+    renderCommitInfo(data, filteredCommits);
 }
 
 d3.select('#file-story')
