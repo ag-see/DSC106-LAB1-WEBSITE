@@ -250,6 +250,11 @@ circle {
   transition: 200ms;
   transform-origin: center;
   transform-box: fill-box;
+  @starting-style {
+    circle {
+        r: 0;
+    }
+}
 }
 
 circle:hover {
@@ -288,4 +293,141 @@ dl.info[hidden]:not(:hover, :focus-within) {
 
 circle.selected {
   fill: #ff6b6b;
+}
+
+.slider-container {
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+#commit-progress {
+    flex: 1;
+}
+
+#commit-time {
+    margin-left: auto;
+    white-space: nowrap;
+}
+
+circle {
+    transition: all 200ms;
+}
+
+@starting-style {
+    circle {
+        r: 0;
+    }
+}
+
+#files {
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+
+  > div {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: subgrid;
+  }
+
+  dt {
+    grid-column: 1;
+  }
+
+  dd {
+    grid-column: 2;
+  }
+}
+
+#files dt small {
+    display: block;
+    font-size: 0.75em;
+    opacity: 0.6;
+}
+
+.loc {
+  display: flex;
+  width: 0.5em;
+  aspect-ratio: 1;
+  background: var(--color);
+  border-radius: 50%;
+}
+
+dd {
+  grid-column: 2;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: start;
+  align-content: start;
+  gap: 0.15em;
+  padding-top: 0.6em;
+  margin-left: 0;
+}
+
+#scrolly-1 {
+    position: relative;
+    display: flex;
+    gap: 1rem;
+
+    > * {
+        flex: 1;
+    }
+}
+
+#scatter-story {
+    position: relative;
+}
+
+#scatter-plot {
+    position: sticky;
+    top: 0;
+    left: 0;
+    bottom: auto;
+    height: 50vh;
+}
+
+#scrolly-2 {
+    position: relative;
+    display: flex;
+    gap: 1rem;
+
+    > * {
+        flex: 1;
+    }
+}
+
+#file-story {
+    position: relative;
+}
+
+#file-visualization {
+    position: sticky;
+    top: 0;
+    left: 0;
+    bottom: auto;
+    height: 50vh;
+}
+
+#stats {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: canvas;
+    padding: 0.5rem 0;
+}
+
+#stats dl {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    align-items: baseline;
+}
+
+#stats dl dt {
+    font-weight: bold;
+}
+
+#stats dl dd {
+    margin: 0;
 }
