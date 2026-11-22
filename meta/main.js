@@ -474,7 +474,7 @@ d3.select('#file-story')
                 dateStyle: 'full',
                 timeStyle: 'short',
             })},
-            I made <a href="${d.url}" target="_blank">${
+            I made<a href="${d.url}" target="_blank">${
                 i > 0 ? 'another glorious commit' : 'my first commit, and it was glorious'
             }</a>.
             I edited ${d.totalLines} lines across ${
