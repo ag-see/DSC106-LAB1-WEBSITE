@@ -65,22 +65,30 @@ function processCommits(data) {
 
 function renderCommitInfo(data, commits) {
     d3.select('#stats').selectAll('*').remove();
-    const dl = d3.select('#stats').append('dl').attr('class', 'info');
+
+    const dl = d3.select('#stats')
+        .append('dl')
+        .attr('class', 'info');
+
+    // Helper to group each label and value together
+    function appendStat(label, value) {
+        const item = dl.append('div');
+
+        item.append('dt').html(label);
+        item.append('dd').text(value);
+    }
 
     // Total LOC based on commits reached through scrolling
     const totalLOC = d3.sum(commits, d => d.totalLines);
 
-    dl.append('dt').html('Total <abbr title="Lines of code">LOC</abbr>');
-    dl.append('dd').text(totalLOC);
+    appendStat('Total <abbr title="Lines of code">LOC</abbr>', totalLOC);
 
     // Total commits
-    dl.append('dt').text('Total commits');
-    dl.append('dd').text(commits.length);
+    appendStat('Total commits', commits.length);
 
     // Number of files
     const files = d3.group(data, d => d.file);
-    dl.append('dt').text('Number of files');
-    dl.append('dd').text(files.size);
+    appendStat('Number of files', files.size);
 
     // Longest file
     const fileLengths = Array.from(files, ([file, lines]) => ({
@@ -90,16 +98,18 @@ function renderCommitInfo(data, commits) {
 
     const longestFile = d3.greatest(fileLengths, d => d.length);
 
-    dl.append('dt').text('Longest file');
-    dl.append('dd').text(
+    appendStat(
+        'Longest file',
         `${longestFile.file} (${longestFile.length} lines)`
     );
 
     // Average file length
     const averageLength = d3.mean(fileLengths, d => d.length);
 
-    dl.append('dt').text('Average file length');
-    dl.append('dd').text(`${averageLength.toFixed(2)} lines`);
+    appendStat(
+        'Average file length',
+        `${averageLength.toFixed(2)} lines`
+    );
 
     // Most active day of the week
     const commitsByDay = d3.rollup(
@@ -115,8 +125,8 @@ function renderCommitInfo(data, commits) {
         d => d.count
     );
 
-    dl.append('dt').text('Most active day');
-    dl.append('dd').text(
+    appendStat(
+        'Most active day',
         `${mostActiveDay.day} (${mostActiveDay.count} commits)`
     );
 }
@@ -447,8 +457,14 @@ d3.select('#scatter-story')
 	`,
   );
 
+  d3.select('#scatter-story')
+    .append('div')
+    .attr('class', 'scrolly-transition');
+
 function onStepEnter(response) {
     const commit = response.element.__data__;
+
+    if (!commit) return;
 
     const commitIndex = commits.findIndex(
         d => d.id === commit.id
@@ -460,8 +476,6 @@ function onStepEnter(response) {
 
     updateScatterPlot(data, filteredCommits);
     updateFileDisplay(filteredCommits);
-
-    // Keep total LOC and file count based on the complete dataset
     renderCommitInfo(data, filteredCommits);
 }
 
